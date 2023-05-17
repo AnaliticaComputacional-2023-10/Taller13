@@ -78,9 +78,10 @@ Allí puede observar un preview de los datos. De click en Transformar.
 
 En esta etapa puede transformar los datos antes de proceder a realizar visualizaciones. Note que en la barra de comandos hay un comando que describe la creación de la tabla con los tipos de cada columna. Copie este comando en su reporte.
 
-```
+```sql
 = Table.TransformColumnTypes(
-   #"Encabezados promovidos",{{"Country", type text},
+   #"Encabezados promovidos",
+   {{"Country", type text},
    {"Subject Descriptor", type text},
    {"Units", type text},
    {"Scale", type text},
@@ -118,11 +119,12 @@ Note que en la columna GDP tenemos valores n/a. Para eliminarlos haga click en e
 ### 13.
 
 Considere ahora los tipos de cada columna, lístelos en su reporte.
-Data type
 
-- Country: text
-- Year: Int64.Type
-- GDP: Any
+**Data type**
+
+- **Country:** text
+- **Year:** Int64.Type
+- **GDP:** Any
 
 ---
 
