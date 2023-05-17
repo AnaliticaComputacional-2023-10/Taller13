@@ -78,6 +78,17 @@ Allí puede observar un preview de los datos. De click en Transformar.
 
 En esta etapa puede transformar los datos antes de proceder a realizar visualizaciones. Note que en la barra de comandos hay un comando que describe la creación de la tabla con los tipos de cada columna. Copie este comando en su reporte.
 
+```
+= Table.TransformColumnTypes(
+   #"Encabezados promovidos",{{"Country", type text},
+   {"Subject Descriptor", type text},
+   {"Units", type text},
+   {"Scale", type text},
+   {"Year", Int64.Type},
+   {"GDP", type any}}
+)
+```
+
 ---
 
 ### 9.
@@ -107,6 +118,11 @@ Note que en la columna GDP tenemos valores n/a. Para eliminarlos haga click en e
 ### 13.
 
 Considere ahora los tipos de cada columna, lístelos en su reporte.
+Data type
+
+- Country: text
+- Year: Int64.Type
+- GDP: Any
 
 ---
 
@@ -168,11 +184,19 @@ Para filtrar los 5 países con el mayor GDP promedio, en Filtros seleccione la t
 
 Tome un pantallazo a la gráfica obtenida e inclúyalo en su reporte.
 
+![1684271761023](image/Taller13-Solucion/1684271761023.png)
+
 ---
 
 ### 24.
 
 Este gráfico no es muy agradable, pero hay múltiples alternativas que puede seleccionar fácilmente con un click en la gráfica y seleccionando una visualización en el menú de la derecha. Seleccione 3 diferentes a manera de prueba, ajuste los colores (en la pestaña Formato) e inclúyalas en su reporte. Si tiene problemas con los mapas, vaya a Archivo, Opciones y configuración, Opciones, seleccione Seguridad en el menú de la izquierda y marque Uso de elementos visuales y mapa cloroplético.
+
+![1684272085405](image/Taller13-Solucion/1684272085405.png)
+
+![1684272128634](image/Taller13-Solucion/1684272128634.png)
+
+![1684272175140](image/Taller13-Solucion/1684272175140.png)
 
 ---
 
@@ -197,6 +221,10 @@ Cree ahora un mapa cloroplético con la misma serie y ajústelo según considere
 ### 28.
 
 Incluya un pantallazo de su objeto visual (con por lo menos la gráfica de líneas y el mapa) en su reporte.
+
+![1684346758220](image/Taller13-Solucion/1684346758220.png)
+
+![1684272833366](image/Taller13-Solucion/1684272833366.png)
 
 ---
 
@@ -425,30 +453,6 @@ Tome un pantallazo de la tabla actualizada e inclúyalo en su reporte.
 ### 36.
 
 Guarde su proyecto.
-
-```
-= Table.TransformColumnTypes(#"Encabezados promovidos",{{"Country", type text}, {"Subject Descriptor", type text}, {"Units", type text}, {"Scale", type text}, {"Year", Int64.Type}, {"GDP", type any}})
-```
-
-Data type
-
-- Country: text
-- Year: Int64.Type
-- GDP: Any
-
-![1684271761023](image/Taller13-Solucion/1684271761023.png)
-
-![1684272085405](image/Taller13-Solucion/1684272085405.png)
-
-![1684272128634](image/Taller13-Solucion/1684272128634.png)
-
-![1684272175140](image/Taller13-Solucion/1684272175140.png)
-
-![1684272296410](image/Taller13-Solucion/1684272296410.png)
-
-![1684272773509](image/Taller13-Solucion/1684272773509.png)
-
-![1684272833366](image/Taller13-Solucion/1684272833366.png)
 
 ![1684273209017](image/Taller13-Solucion/1684273209017.png)
 
