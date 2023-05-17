@@ -1,4 +1,4 @@
-# Taller 12
+# Taller 13
 
 ### Power BI
 
@@ -209,8 +209,6 @@ Guarde su proyecto para incluirlo como soporte de este taller.
 ---
 
 ## Trabajando con datos
-
----
 
 ---
 
