@@ -81,12 +81,14 @@ En esta etapa puede transformar los datos antes de proceder a realizar visualiza
 ```sql
 = Table.TransformColumnTypes(
    #"Encabezados promovidos",
-   {{"Country", type text},
-   {"Subject Descriptor", type text},
-   {"Units", type text},
-   {"Scale", type text},
-   {"Year", Int64.Type},
-   {"GDP", type any}}
+   {
+      {"Country", type text},
+      {"Subject Descriptor", type text},
+      {"Units", type text},
+      {"Scale", type text},
+      {"Year", Int64.Type},
+      {"GDP", type any}
+   }
 )
 ```
 
@@ -234,6 +236,8 @@ Incluya un pantallazo de su objeto visual (con por lo menos la gráfica de líne
 
 Guarde su proyecto para incluirlo como soporte de este taller.
 
+- **Nombre Archivo**: `GDP.pbix`
+
 ---
 
 ---
@@ -288,17 +292,77 @@ Explore brevemente el menú de opciones del Power Query editor. Note que en la p
 
 En el panel de Configuración de consulta puede cambiar el nombre de la consulta. Cámbielo para incluir su nombre al inicio, e.g., juan-2021-q1-sales. Verifique que el cambio se muestre en el panel Consultas de la izquierda. Tome un pantallazo e inclúyalo en su reporte.
 
+- **Nombre Consulta:** `santiago-2021-Q1-Sales`
+
+![1684377840294](image/Taller13-Solucion/1684377840294.png)
+
 ---
 
 ### 9.
 
 Identifique los pasos aplicados hasta el momento en la consulta y descríbalos en su reporte.
 
+![1684377927413](image/Taller13-Solucion/1684377927413.png)
+
+- **Origen**
+
+```sql
+= Csv.Document(
+   File.Contents("C:\Users\SGM\Documents\Analytics\Talleres\Taller13\Data\2021-Sales\2021-Q1-Sales.csv"),
+   [
+      Delimiter=",",
+      Columns=6,
+      Encoding=1252,
+      QuoteStyle=QuoteStyle.None
+   ]
+)
+```
+
+Se cargan los datos, se muestra la dirección física del archivo en memoria. Además, ciertas características para leer el archivo como el delimitador, el número de columnas, la forma en que están codificados los datos.
+Los datos cargados con estas condiciones son almacenados en la variable `Origen`.
+
+- **Encabezados promovidos**
+
+```sql
+= Table.PromoteHeaders(
+   Origen,
+   [
+      PromoteAllScalars=true
+   ]
+)
+```
+
+Esta función se utiliza para promover las filas superiores de una tabla o archivo como encabezados de la columna. Esta función usa los datos de la variable `Origen` y los transforma, esta transformación se guarda en la variable `Encabezados promovidos`.
+
+- **Tipo cambiado**
+
+```dax
+= Table.TransformColumnTypes(
+   #"Encabezados promovidos",
+   {
+      {"Order ID", Int64.Type},
+      {"Product", type text},
+      {"Quantity Ordered", Int64.Type},
+      {"Price Each", type number},
+      {"Order Date", type text},
+      {"Purchase Address", type text}
+   }
+)
+```
+
+En esta función se define el tipo de dato que almacena cada una de las columnas, se definen sobre los datos en la variable `Encabezados promovidos`. Estos datos finales donde las columnas tienen definido el tipo de dato se guardan en la variable `Tipo cambiado`.
+
 ---
 
 ### 10.
 
 Note que cada columna tiene una barra verde. Ubique el cursor sobre la barra y observe el número de datos correctos, con errores y vacíos en cada columna. Documente esto en su reporte. Note que esto está basado en las primeras 1000 filas.
+
+![1684381161595](image/Taller13-Solucion/1684381161595.png)
+
+Al ubicar el cursor se observa de la siguiente forma. Sin embargo, para evitar tener que ubicar el cursor en cada una de las columnas se puede habilitar la opción `Calidad de columnas` en la sección `Vista`.
+
+![1684381238840](image/Taller13-Solucion/1684381238840.png)
 
 ---
 
@@ -329,6 +393,8 @@ Ordene nuevamente descendentemente por la columna Order ID. Responda Sí a la pr
 ### 15.
 
 Regrese al último paso de la consulta (Filas ordenadas) y verifique que la consulta funciona correctamente. Aplique un ordenamiento ascendente sobre la columna Order ID, tome un pantallazo e inclúyalo en su reporte.
+
+![1684381564029](image/Taller13-Solucion/1684381564029.png)
 
 ---
 
@@ -377,6 +443,8 @@ Cree ahora un grupo de consultas haciendo click derecho en el panel de Consultas
 ### 23.
 
 Seleccione las 4 consultas creadas y arrástrelas al grupo creado. Tome un pantallazo e inclúyalo en su reporte.
+
+![1684381977237](image/Taller13-Solucion/1684381977237.png)
 
 ---
 
@@ -450,18 +518,12 @@ Reordene las columnas para dejar a la izquierda los datos de la orden y a la der
 
 Tome un pantallazo de la tabla actualizada e inclúyalo en su reporte.
 
+![1684382425039](image/Taller13-Solucion/1684382425039.png)
+
 ---
 
 ### 36.
 
 Guarde su proyecto.
 
-![1684273209017](image/Taller13-Solucion/1684273209017.png)
-
-![1684273327770](image/Taller13-Solucion/1684273327770.png)
-
-![1684273405083](image/Taller13-Solucion/1684273405083.png)
-
-![1684273435545](image/Taller13-Solucion/1684273435545.png)
-
-![1684273464991](image/Taller13-Solucion/1684273464991.png)
+- **Nombre Archivo**: `Sales.pbix`
